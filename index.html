@@ -24,6 +24,6 @@
 f.addEventListener('submit',async e=>{e.preventDefault();const v=i.value.trim();if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){m.textContent='Adresse e-mail invalide.';i.focus();return;}
 b.disabled=true;m.textContent='Envoi…';
 try{const r=await fetch('https://formsubmit.co/ajax/contact@hyas.fr',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({email:v,_subject:'Mercury : liste d’attente',_template:'table',_captcha:'false',source:location.search||'site'})});
-if(!r.ok)throw 0;f.classList.add('done');m.textContent='C’est noté ! Vous recevrez un e-mail le jour de la sortie.';i.value='';}catch(_){m.textContent='Oups, réessayez dans un instant.';}finally{b.disabled=false;}});})();
+const j=await r.json().catch(()=>({}));if(!r.ok||String(j.success)!=='true')throw 0;f.classList.add('done');m.textContent='C’est noté ! Vous recevrez un e-mail le jour de la sortie.';i.value='';}catch(_){m.textContent='Oups, réessayez dans un instant.';}finally{b.disabled=false;}});})();
 </script>
 </body></html>
